@@ -23,6 +23,6 @@ defmodule BackendWeb.ConversationChannel do
       when status in @status_updates do
     message = Backend.update_message_status(id, status)
     broadcast_from!(socket, status, %{message: message})
-    {:reply, :ok, socket}
+    {:reply, {:ok, %{message: message}}, socket}
   end
 end

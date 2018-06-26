@@ -45,7 +45,7 @@ defmodule BackendWeb.MainChannel do
       u_id: id
     }
 
-    {:reply, {:ok, entry}, socket |> update(entry)}
+    {:reply, {:ok, entry}, socket}
   end
 
   # -=-=-=-=-=-=-=-=-=-PRIVATE API
@@ -69,15 +69,5 @@ defmodule BackendWeb.MainChannel do
         assign(acc, :topics, [topic | topics])
       end
     end)
-  end
-
-  defp update(socket, entry) do
-    state = socket.assigns.state
-
-    unless entry in state do
-      assign(socket, :state, [entry | state])
-    end
-
-    socket
   end
 end

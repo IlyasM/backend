@@ -21,20 +21,4 @@ defmodule Backend.BackendTest do
     message = Backend.update_message_status(message.id, "received")
     assert message.status == "received"
   end
-
-  test "messages since", %{user1: user1, chat: chat} do
-    messages =
-      1..10
-      |> Enum.map(fn _ ->
-        Backend.create_message(%{
-          author_id: user1.id,
-          chat_id: chat.id,
-          text: Enum.random(["hello", "yo", "how is it going", "whats up", "bro"])
-        })
-      end)
-
-    random_id = Enum.random(messages).id
-    [h | _] = Backend.messages_since(chat.id, random_id)
-    assert h.id == random_id + 1
-  end
 end
