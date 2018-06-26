@@ -1,5 +1,5 @@
 defmodule BackendWeb.ConversationChannelTest do
-  use BackendWeb.ConnCase, async: true
+  use BackendWeb.ChannelCase, async: true
   use BackendWeb, :db
 
   test "first" do

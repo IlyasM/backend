@@ -1,5 +1,5 @@
 defmodule BackendWeb.AuthTest do
-  use BackendWeb.ConnCase, async: true
+  use BackendWeb.ConnCase
   use BackendWeb, :db
 
   @user_params %{
