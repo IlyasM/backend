@@ -21,20 +21,6 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:user_id]
 
-config :guardian, Guardian,
-  # optional
-  allowed_algos: ["HS512"],
-  # optional
-  verify_module: Guardian.JWT,
-  issuer: "backend",
-  ttl: {30, :days},
-  allowed_drift: 2000,
-  # optional
-  verify_issuer: true,
-  # Insert previously generated secret key!
-  secret_key: System.get_env("APP_SECRET"),
-  serializer: Backend.GuardianSerializer
-
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

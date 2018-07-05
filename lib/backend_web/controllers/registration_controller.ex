@@ -18,6 +18,7 @@ defmodule BackendWeb.RegistrationController do
 
       {:error, changeset} ->
         conn
+        |> put_status(401)
         |> json(%{
           errors:
             Ecto.Changeset.traverse_errors(changeset, &BackendWeb.ErrorHelpers.translate_error/1)

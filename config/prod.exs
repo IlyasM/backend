@@ -21,6 +21,20 @@ config :backend, BackendWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :guardian, Guardian,
+  # optional
+  allowed_algos: ["HS512"],
+  # optional
+  verify_module: Guardian.JWT,
+  issuer: "backend",
+  ttl: {30, :days},
+  allowed_drift: 2000,
+  # optional
+  verify_issuer: true,
+  # Insert previously generated secret key!
+  secret_key: System.get_env("APP_SECRET"),
+  serializer: Backend.GuardianSerializer
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

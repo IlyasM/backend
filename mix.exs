@@ -20,7 +20,7 @@ defmodule Backend.Mixfile do
   def application do
     [
       mod: {Backend.Application, []},
-      extra_applications: [:logger, :runtime_tools, :comeonin]
+      extra_applications: [:logger, :runtime_tools, :comeonin, :faker]
     ]
   end
 
@@ -43,7 +43,8 @@ defmodule Backend.Mixfile do
       {:cowboy, "~> 1.0"},
       {:guardian, "~> 0.14"},
       {:comeonin, "~> 4.1"},
-      {:bcrypt_elixir, "~> 1.0"}
+      {:bcrypt_elixir, "~> 1.0"},
+      {:faker, "~> 0.10"}
     ]
   end
 

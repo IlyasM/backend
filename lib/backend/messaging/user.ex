@@ -1,13 +1,15 @@
 defmodule Backend.Messaging.User do
+  Faker.start()
   use Ecto.Schema
   import Ecto.Changeset
   use BackendWeb, :db
-  @derive {Poison.Encoder, only: [:id, :name, :email]}
+  @derive {Poison.Encoder, only: [:id, :name, :email, :image]}
   schema "users" do
     field(:email, :string)
     field(:name, :string)
     field(:password_hash, :string)
     field(:password, :string, virtual: true)
+    field(:image, :string)
 
     many_to_many(
       :chats,
@@ -21,16 +23,9 @@ defmodule Backend.Messaging.User do
   end
 
   @doc false
-  def changeset(struct, params \\ %{}) do
-    struct
-    |> cast(params, [:email, :name, :password])
-    |> validate_required([:email, :name, :password])
-    |> validate_changeset
-  end
-
   def registration_changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:email, :name, :password])
+    |> cast(params, [:email, :name, :password, :image])
     |> validate_required([:email, :name, :password])
     |> validate_changeset
   end

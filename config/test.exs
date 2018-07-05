@@ -17,3 +17,17 @@ config :backend, Backend.Repo,
   database: "backend_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :guardian, Guardian,
+  # optional
+  allowed_algos: ["HS512"],
+  # optional
+  verify_module: Guardian.JWT,
+  issuer: "backend",
+  ttl: {30, :days},
+  allowed_drift: 2000,
+  # optional
+  verify_issuer: true,
+  # Insert previously generated secret key!
+  secret_key: "LCs1e75TzKyTABAdcwYXkKZtUpObRnvssU0QgEpX0D7ebKB/nzOCv6FAzzrKsEEf",
+  serializer: Backend.GuardianSerializer

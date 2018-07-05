@@ -27,7 +27,7 @@ defmodule BackendWeb.AuthTest do
              "errors" => %{
                "email" => ["has already been taken"]
              }
-           } = json_response(conn, 200)
+           } = json_response(conn, 401)
   end
 
   test "POST /api/sign_up -- invalid params",
@@ -42,7 +42,7 @@ defmodule BackendWeb.AuthTest do
                "email" => _email_errors,
                "password" => _password_error
              }
-           } = json_response(conn, 200)
+           } = json_response(conn, 401)
   end
 
   test "POST /api/sign_in -- token created successfully",

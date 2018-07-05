@@ -6,6 +6,7 @@ defmodule Backend.Repo.Migrations.CreateUsers do
       add(:name, :string)
       add(:email, :string)
       add(:password_hash, :string)
+      add(:image, :string)
       timestamps()
     end
 

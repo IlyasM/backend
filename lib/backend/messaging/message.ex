@@ -5,7 +5,7 @@ defmodule Backend.Messaging.Message do
 
   @derive {
     Poison.Encoder,
-    only: [:id, :status, :text, :author_id, :chat_id]
+    only: [:id, :status, :text, :author_id, :chat_id, :inserted_at]
   }
   schema "messages" do
     field(:status, :string, default: "saved")

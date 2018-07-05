@@ -11,17 +11,20 @@ defmodule BackendWeb.UserSocket do
   def connect(%{"token" => token}, socket) do
     with {:ok, claims} <- Guardian.decode_and_verify(token),
          {:ok, user} <- Backend.GuardianSerializer.from_token(claims["sub"]) do
-      {:ok,
-       socket
-       |> assign(:topics, [])
-       |> assign(:state, [])
-       |> assign(:current_user, %{id: user.id, email: user.email, name: user.name})}
+      {
+        :ok,
+        socket
+        |> assign(:topics, [])
+        |> assign(:state, [])
+        |> assign(:current_user, %{id: user.id, email: user.email, name: user.name})
+      }
     else
-      {:error, _reason} -> :error
+      {:error, _reason} ->
+        :error
     end
   end
 
-  def connect(_params, _socket) do
+  def connect(_parrams, _socket) do
     :error
   end
 

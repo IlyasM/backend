@@ -18,5 +18,5 @@
                         'Elixir.Guardian.Plug.VerifySession',
                         'Elixir.Guardian.Serializer','Elixir.Guardian.Utils']},
               {registered,[]},
-              {vsn,"1.1.0"},
+              {vsn,"0.14.5"},
               {applications,[kernel,stdlib,elixir,logger,poison,jose,uuid]}]}.
