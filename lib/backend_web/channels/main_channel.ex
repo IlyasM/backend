@@ -40,7 +40,6 @@ defmodule BackendWeb.MainChannel do
 
   def handle_in("received", %{"message" => message}, socket) do
     message = Backend.update_message_status(message["id"], "received")
-    IO.inspect("in main channell received")
     # notify sender that her message is received
     BackendWeb.Endpoint.broadcast_from(
       self(),

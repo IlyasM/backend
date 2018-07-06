@@ -47,8 +47,7 @@ defmodule BackendWeb.ConversationChannel do
 
   def handle_in(status, %{"message_id" => id}, socket)
       when status in @status_updates do
-    IO.puts("in conversation status handler")
-    IO.inspect(status)
+
     message = Backend.update_message_status(id, status)
     broadcast_from!(socket, status, message)
     {:reply, :ok, socket}
